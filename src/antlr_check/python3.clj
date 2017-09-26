@@ -1,11 +1,10 @@
 (ns antlr-check.python3
-   (:gen-class)
-   (:import 
-      (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
-      Python3Lexer
-      Python3Parser
-      AST
-      ))
+  (:import 
+    (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
+    Python3Lexer
+    Python3Parser
+    AST
+    ))
 
 (defn python3 []
   (let [error-h (proxy [org.antlr.v4.runtime.BaseErrorListener] []

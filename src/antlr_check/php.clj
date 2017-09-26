@@ -1,10 +1,10 @@
 (ns antlr-check.php
-   (:import 
-      (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
-      PHPLexer
-      PHPParser
-      AST
-      ))
+  (:import 
+    (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
+    PHPLexer
+    PHPParser
+    AST
+    ))
 
 (defn php []
   (let [error-h (proxy [org.antlr.v4.runtime.BaseErrorListener] []

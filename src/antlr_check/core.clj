@@ -6,6 +6,8 @@
      [antlr-check.python3]
      [antlr-check.java]
      [antlr-check.js]
+     [antlr-check.ruby]
+     [antlr-check.c]
    ))
 
 

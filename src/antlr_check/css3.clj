@@ -1,11 +1,10 @@
 (ns antlr-check.css3
-   (:gen-class)
-   (:import 
-      (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
-      css3Lexer
-      css3Parser
-      AST
-      ))
+  (:import 
+    (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
+    css3Lexer
+    css3Parser
+    AST
+    ))
 (defn css3 []
   (let [error-h (proxy [org.antlr.v4.runtime.BaseErrorListener] []
                   (syntaxError [& args]

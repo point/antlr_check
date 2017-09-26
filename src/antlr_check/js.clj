@@ -1,11 +1,10 @@
 (ns antlr-check.js
-   (:gen-class)
-   (:import 
-      (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
-      ECMAScriptLexer
-      ECMAScriptParser
-      AST
-      ))
+  (:import 
+    (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
+    ECMAScriptLexer
+    ECMAScriptParser
+    AST
+    ))
 
 (defn js []
   (let [error-h (proxy [org.antlr.v4.runtime.BaseErrorListener] []

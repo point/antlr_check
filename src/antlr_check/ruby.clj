@@ -1,19 +1,19 @@
-(ns antlr-check.java
+(ns antlr-check.ruby
   (:import 
     (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
-    Java8Lexer
-    Java8Parser
+    CorundumLexer
+    CorundumParser
     AST
     ))
-(defn java []
+(defn ruby []
   (let [error-h (proxy [org.antlr.v4.runtime.BaseErrorListener] []
                   (syntaxError [& args]
                     (throw (ex-info "syntaxError" {}))))
         files (->> 
-                "code/java" 
+                "code/ruby" 
                 clojure.java.io/file 
                 file-seq 
-                (filter #(->> % .toString (re-find #"\.java$"))))
+                (filter #(->> % .toString (re-find #"\.rb"))))
         pos (atom 0)
         neg (atom 0)]
     (doseq [f files]
@@ -21,19 +21,17 @@
                      (.toString f)
                      slurp
                      ANTLRInputStream.
-                     Java8Lexer.
+                     CorundumLexer.
                      CommonTokenStream.
-                     Java8Parser.)]
+                     CorundumParser.)]
         (.removeErrorListeners parser)
         (.addErrorListener parser error-h)
         (try
-          (-> parser .compilationUnit .toStringTree)
-          ;(.compilationUnit parser)
+          (-> parser .prog .toStringTree)
           (print "+")
           (flush)
           (swap! pos inc)
           (catch Exception e
-            (println e)
             (print "-")
             (flush)
             (swap! neg inc)

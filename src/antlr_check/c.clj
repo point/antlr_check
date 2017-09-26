@@ -1,19 +1,21 @@
-(ns antlr-check.java
+(ns antlr-check.c
   (:import 
     (org.antlr.v4.runtime ANTLRInputStream CommonTokenStream BaseErrorListener)
-    Java8Lexer
-    Java8Parser
+    CLexer
+    CParser
+    CPP14Lexer
+    CPP14Parser
     AST
     ))
-(defn java []
+(defn c []
   (let [error-h (proxy [org.antlr.v4.runtime.BaseErrorListener] []
                   (syntaxError [& args]
                     (throw (ex-info "syntaxError" {}))))
         files (->> 
-                "code/java" 
+                "code/c" 
                 clojure.java.io/file 
                 file-seq 
-                (filter #(->> % .toString (re-find #"\.java$"))))
+                (filter #(->> % .toString (re-find #"\.c"))))
         pos (atom 0)
         neg (atom 0)]
     (doseq [f files]
@@ -21,19 +23,19 @@
                      (.toString f)
                      slurp
                      ANTLRInputStream.
-                     Java8Lexer.
+                     CPP14Lexer.
                      CommonTokenStream.
-                     Java8Parser.)]
+                     CPP14Parser.)]
         (.removeErrorListeners parser)
         (.addErrorListener parser error-h)
         (try
-          (-> parser .compilationUnit .toStringTree)
-          ;(.compilationUnit parser)
+          ;(-> parser .primaryExpression )
+          (-> parser .primaryexpression )
           (print "+")
           (flush)
           (swap! pos inc)
           (catch Exception e
-            (println e)
+            ;(println e)
             (print "-")
             (flush)
             (swap! neg inc)
