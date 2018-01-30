@@ -215,7 +215,7 @@ mode PHP;
 
 PHPEnd:             (('?' | {AspTags}? '%') '>') | {_phpScript}? '</script>';
 Whitespace:         [ \t\r\n]+ -> channel(SkipChannel);
-MultiLineComment:   '/*' .*? '*/' -> channel(PhpComments);
+MultiLineComment:   '/*' .*? '*/' ;//-> channel(PhpComments);
 SingleLineComment:  '//' -> channel(SkipChannel), pushMode(SingleLineCommentMode);
 ShellStyleComment:  '#' -> channel(SkipChannel), pushMode(SingleLineCommentMode);
 

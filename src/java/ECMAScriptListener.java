@@ -47,6 +47,76 @@ public interface ECMAScriptListener extends ParseTreeListener {
 	 */
 	void exitStatement(ECMAScriptParser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#importStatements}.
+	 * @param ctx the parse tree
+	 */
+	void enterImportStatements(ECMAScriptParser.ImportStatementsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#importStatements}.
+	 * @param ctx the parse tree
+	 */
+	void exitImportStatements(ECMAScriptParser.ImportStatementsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#importStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterImportStatement(ECMAScriptParser.ImportStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#importStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitImportStatement(ECMAScriptParser.ImportStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#importFromStatements}.
+	 * @param ctx the parse tree
+	 */
+	void enterImportFromStatements(ECMAScriptParser.ImportFromStatementsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#importFromStatements}.
+	 * @param ctx the parse tree
+	 */
+	void exitImportFromStatements(ECMAScriptParser.ImportFromStatementsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#importName}.
+	 * @param ctx the parse tree
+	 */
+	void enterImportName(ECMAScriptParser.ImportNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#importName}.
+	 * @param ctx the parse tree
+	 */
+	void exitImportName(ECMAScriptParser.ImportNameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#exportStatment}.
+	 * @param ctx the parse tree
+	 */
+	void enterExportStatment(ECMAScriptParser.ExportStatmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#exportStatment}.
+	 * @param ctx the parse tree
+	 */
+	void exitExportStatment(ECMAScriptParser.ExportStatmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#exportIdentifiers}.
+	 * @param ctx the parse tree
+	 */
+	void enterExportIdentifiers(ECMAScriptParser.ExportIdentifiersContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#exportIdentifiers}.
+	 * @param ctx the parse tree
+	 */
+	void exitExportIdentifiers(ECMAScriptParser.ExportIdentifiersContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ECMAScriptParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassDeclaration(ECMAScriptParser.ClassDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ECMAScriptParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassDeclaration(ECMAScriptParser.ClassDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ECMAScriptParser#block}.
 	 * @param ctx the parse tree
 	 */

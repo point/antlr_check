@@ -234,8 +234,41 @@ statement
  | throwStatement
  | tryStatement
  | debuggerStatement
+ | importStatements
+ | exportStatment
+ | variableDeclaration
+ | MultiLineComment
+ | SingleLineComment
  ;
 
+
+importStatements
+ : importStatement+
+ ;
+
+importStatement
+  : 'import' (importFromStatements 'from')? StringLiteral eos;
+
+importFromStatements 
+	: importName
+	| '{' importName (',' importName)* '}';
+
+importName
+	: ( '*'| Identifier ) ('as' Identifier)?;
+
+exportStatment
+	: 'export' 'default'? exportIdentifiers ('from' StringLiteral)? eos;
+exportIdentifiers
+	: '*'
+	| '{' importName (',' importName)* '}'
+	| FunctionExpression
+	| ExpressionStatement
+	| VariableDeclarationList
+	| classDeclaration
+	;
+
+classDeclaration
+	: 'class' Identifier? block;
 /// Block :
 ///     { StatementList? }
 block
@@ -265,7 +298,7 @@ variableDeclarationList
 /// VariableDeclaration :
 ///     Identifier Initialiser?
 variableDeclaration
- : Identifier initialiser?
+ : ('@' Identifier)? Identifier initialiser?
  ;
 
 /// Initialiser :
@@ -928,11 +961,11 @@ WhiteSpaces
 
 /// 7.4 Comments
 MultiLineComment
- : '/*' .*? '*/' -> channel(HIDDEN)
+ : '/*' .*? '*/'// -> channel(HIDDEN)
  ;
 
 SingleLineComment
- : '//' ~[\r\n\u2028\u2029]* -> channel(HIDDEN)
+ : '//' ~[\r\n\u2028\u2029]* //-> channel(HIDDEN)
  ;
 
 UnexpectedCharacter
